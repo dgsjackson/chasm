@@ -1,0 +1,18 @@
+.navbar-item {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#app-header {
+  padding: 10px;
+  background-color: navy;
+  color: white;
+}
+
+#header-brand {
+  margin-bottom: 0px;
+}
+
+#content-container {
+  padding: 20px;
+}
