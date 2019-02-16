@@ -10,18 +10,18 @@ export default class Content extends React.Component {
             <input className="form-input" id="coin-selector" type="text"></input>
           </div>
           <ul className="menu col-sm-12 col-md-6 col-lg-4 col-3">
-            <li class="menu-item">
+            <li className="menu-item">
               XRP
             </li>
-            <li class="divider"></li>
-            <li class="menu-item">
+            <li className="divider"></li>
+            <li className="menu-item">
               BTC
             </li>
           </ul>
         </div>
         <div id="cards-container" className="col-sm-12 col-md-9 col-6">
-          <div class="card">
-            <h4 class="card-symbol">XRP</h4>
+          <div className="card coin-card">
+            <h4 className="coin-symbol">XRP</h4>
             <div>0.33</div>
           </div>
         </div>
