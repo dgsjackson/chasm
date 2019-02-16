@@ -16,8 +16,8 @@ class App extends React.Component {
           </section>
         </header>
         <div id="content-container">
-          <div className="column col-sm-12 col-md-6 col-lg-4 col-3">
-            <input className="form-input" id="coin-list" type="text"></input>
+          <div className="col-sm-12 col-md-6 col-lg-4 col-3">
+            <input className="form-input" id="coin-selector" type="text"></input>
           </div>
         </div>
       </div>
