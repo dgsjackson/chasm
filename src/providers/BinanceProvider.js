@@ -1,33 +1,38 @@
-import request from 'request-promise';
+import axios from 'axios';
 import _ from 'lodash';
+import handleAxiosError from '../error-handlers/AxiosErrorHandler';
 
-const baseUrl = 'https://www.binance.com/api/';
+const corsProxyUrl = 'https://cors-anywhere.herokuapp.com/';
+const binanceUrl = 'https://www.binance.com/api/';
+const baseUrl = corsProxyUrl + binanceUrl;
+
 const pricesUrl = 'v3/ticker/price';
 
 class BinanceProvider {
 
   fetchPricesInBTC() {
 
-    const options = {
-      uri: baseUrl + pricesUrl,
-      json: true
-    };
+    let url = baseUrl + pricesUrl;
 
-    return request(options).then(pairPrices => {
+    return axios.get(url).then(response => {
+      let pairPrices = response.data;
       let btcPairs = _.filter(pairPrices, symbolPrice => {
-        return symbolPrice.symbol.substring(symbolPrice.substring.length - 3) === 'BTC';
+        return symbolPrice.symbol.substring(symbolPrice.symbol.length - 3) === 'BTC';
       });
       let assetPrices = _.map(btcPairs, pair => {
         let pairSymbol = pair.symbol;
         return { 
-          assetSymbol: pairSymbol.substring(0, pairSymbol.length - 3),
+          symbol: pairSymbol.substring(0, pairSymbol.length - 3),
           price: pair.price 
         };
       });
       return assetPrices;
+    }).catch(error => {
+      handleAxiosError(error);
+      throw new Error(error.message);
     });
   }
 
 }
 
-export default BinanceProvider;
+export default new BinanceProvider();
