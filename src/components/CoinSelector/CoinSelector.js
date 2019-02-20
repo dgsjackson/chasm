@@ -1,5 +1,6 @@
 import React from 'react';
 import BinanceProvider from '../../providers/BinanceProvider';
+import './CoinSelector.css';
 
 export default class CoinSelector extends React.Component {
 
@@ -27,7 +28,7 @@ export default class CoinSelector extends React.Component {
         <div className="col-sm-12 col-md-6 col-lg-4 col-3">
           <input className="form-input" id="coin-selector" type="text"></input>
         </div>
-        <ul className="menu col-sm-12 col-md-6 col-lg-4 col-3">
+        <ul className="menu menu-float col-sm-12 col-md-6 col-lg-4 col-3">
           {assetListItems}
         </ul>
       </div>

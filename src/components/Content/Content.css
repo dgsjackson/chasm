@@ -1,8 +1,11 @@
 #content-container {
+  position: relative;
   padding: 20px;
 }
 
 #cards-container {
+  position: absolute;
+  top: 55px;
   margin-top: 20px;
 }
 
