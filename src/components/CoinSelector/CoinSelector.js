@@ -49,12 +49,18 @@ export default class CoinSelector extends React.Component {
                   id="coin-selector" 
                   type="text" 
                   onChange={this.handleInputChange}
+                  onFocus={() => this.setState({ showSymbols: true })}
+                  onBlur={() => this.setState({ showSymbols: false })}
                   autocomplete="off">
           </input>
         </div>
-        <ul className="menu menu-float col-sm-12 col-md-6 col-lg-4 col-3">
-          {assetListItems}
-        </ul>
+        {
+          this.state.showSymbols &&
+          <ul className="menu menu-float col-sm-12 col-md-6 col-lg-4 col-3">
+            {assetListItems}
+          </ul>
+        }
+        
       </div>
     );
   }
