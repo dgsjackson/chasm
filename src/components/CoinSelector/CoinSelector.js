@@ -36,7 +36,12 @@ export default class CoinSelector extends React.Component {
     let assetListItems = [];
 
     _.each(this.state.filteredAssets, (asset, index) => {
-      assetListItems.push(<li key={asset.symbol} className="menu-item">{asset.symbol}</li>);
+      assetListItems.push((
+        <li key={asset.symbol} className="menu-item asset-list-item">
+          <span>{asset.symbol}</span>
+          <span>{asset.price} <i className="fab fa-btc"></i></span>
+        </li>
+      ));
       if (index < this.state.filteredAssets.length - 1) {
         assetListItems.push(<li key={index} className="divider"></li>);        
       }
