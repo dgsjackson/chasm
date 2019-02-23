@@ -7,12 +7,12 @@ export default class CoinSelector extends React.Component {
 
   constructor(props) {
     super(props);
-    this.handleInputChange = this.handleInputChange.bind(this);
     this.state = { 
       assets: [], 
       filteredAssets: [], 
       showSymbols: false 
     };
+    this.filterAssets = this.filterAssets.bind(this);
   }
 
   componentDidMount() {
@@ -21,7 +21,7 @@ export default class CoinSelector extends React.Component {
     }).catch(() => alert('Failed to load symbols from Binance.'));
   }
 
-  handleInputChange(event) {
+  filterAssets(event) {
     let input = event.target.value;
     let filteredAssets;
     if (_.isEmpty(input)) {
@@ -53,7 +53,7 @@ export default class CoinSelector extends React.Component {
           <input className="form-input" 
                   id="coin-selector" 
                   type="text" 
-                  onChange={this.handleInputChange}
+                  onChange={this.filterAssets}
                   onFocus={() => this.setState({ showSymbols: true })}
                   onBlur={() => this.setState({ showSymbols: false })}
                   autoComplete="off">
