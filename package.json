@@ -4,7 +4,8 @@
   "description": "A pet project for learning ReactJS",
   "main": "index.js",
   "scripts": {
-    "build": "./node_modules/.bin/webpack-dev-server --mode development"
+    "build": "npx webpack-dev-server --mode development",
+    "lint": "npx eslint src/**/*.js"
   },
   "author": "",
   "license": "ISC",
@@ -15,6 +16,8 @@
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.5",
     "css-loader": "^2.1.0",
+    "eslint": "^5.14.1",
+    "eslint-plugin-react": "^7.12.4",
     "react-hot-loader": "^4.6.5",
     "style-loader": "^0.23.1",
     "webpack": "^4.29.3",
