@@ -11,13 +11,13 @@ export default class CoinSelector extends React.Component {
     this.state = { 
       assets: [], 
       filteredAssets: [], 
-      showAssets: false 
+      showSymbols: false 
     };
   }
 
   componentDidMount() {
     BinanceProvider.fetchPricesInBTC().then(assets => {
-      this.setState({ assets });
+      this.setState({ assets, filteredAssets: assets });
     }).catch(() => alert('Failed to load symbols from Binance.'));
   }
 
@@ -36,9 +36,9 @@ export default class CoinSelector extends React.Component {
     let assetListItems = [];
 
     _.each(this.state.filteredAssets, (asset, index) => {
-      assetListItems.push(<li key={index} className="menu-item">{asset.symbol}</li>);
-      if (index < this.state.assets.length - 1) {
-        assetListItems.push(<li key={asset.symbol} className="divider"></li>);        
+      assetListItems.push(<li key={asset.symbol} className="menu-item">{asset.symbol}</li>);
+      if (index < this.state.filteredAssets.length - 1) {
+        assetListItems.push(<li key={index} className="divider"></li>);        
       }
     });
 
@@ -51,16 +51,15 @@ export default class CoinSelector extends React.Component {
                   onChange={this.handleInputChange}
                   onFocus={() => this.setState({ showSymbols: true })}
                   onBlur={() => this.setState({ showSymbols: false })}
-                  autocomplete="off">
+                  autoComplete="off">
           </input>
         </div>
         {
           this.state.showSymbols &&
-          <ul className="menu menu-float col-sm-12 col-md-6 col-lg-4 col-3">
+          <ul id="asset-list" className="menu menu-float col-sm-12 col-md-6 col-lg-4 col-3">
             {assetListItems}
           </ul>
         }
-        
       </div>
     );
   }
