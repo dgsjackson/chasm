@@ -47,6 +47,10 @@
           {
             "properties": "always"
           }
+        ],
+        "arrow-parens": [
+          "error",
+          "as-needed"
         ]
     }
 }
