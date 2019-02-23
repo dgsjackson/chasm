@@ -54,13 +54,13 @@ export default class CoinSelector extends React.Component {
     return (
       <div id="selector-container">
         <div className="col-sm-12 col-md-6 col-lg-4 col-3">
-          <input className="form-input" 
-                  id="coin-selector" 
-                  type="text" 
-                  onChange={this.filterAssets}
-                  onFocus={() => this.setState({ showSymbols: true })}
-                  onBlur={() => this.setState({ showSymbols: false })}
-                  autoComplete="off">
+          <input id="coin-selector"
+            className="form-input"
+            type="text" 
+            onChange={this.filterAssets}
+            onFocus={() => this.setState({ showSymbols: true })}
+            onBlur={() => this.setState({ showSymbols: false })}
+            autoComplete="off">
           </input>
         </div>
         {
