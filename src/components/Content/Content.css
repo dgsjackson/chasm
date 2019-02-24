@@ -3,17 +3,18 @@
   padding: 20px;
 }
 
-#cards-container {
+#grid-container {
   position: absolute;
   top: 55px;
   margin-top: 20px;
 }
 
-.coin-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: row;
-  padding: 10px;
-  box-shadow: 2px 2px 10px 0 lightgray;
+#asset-grid {
+  display: grid;
+  justify-content: space-around;
+  grid-template-columns: repeat(7, auto); 
+}
+
+.column-title {
+  font-size: 14px;
 }
