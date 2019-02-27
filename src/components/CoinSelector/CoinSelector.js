@@ -1,5 +1,6 @@
 import React from 'react';
 import BinanceProvider from '../../providers/BinanceProvider';
+import Events from '../../Events';
 import _ from 'lodash';
 import './CoinSelector.css';
 
@@ -15,6 +16,7 @@ export default class CoinSelector extends React.Component {
     this.inputRef = React.createRef();
     this.menuRef = React.createRef();
     this.filterAssets = this.filterAssets.bind(this);
+    this.selectAsset = this.selectAsset.bind(this);
     this.handleDocumentClick = this.handleDocumentClick.bind(this);
   }
 
@@ -40,6 +42,10 @@ export default class CoinSelector extends React.Component {
     this.setState({ filteredAssets });
   }
 
+  selectAsset(assetSymbol) {
+    Events.trigger(Events.AssetSelected, [assetSymbol]);
+  }
+
   handleDocumentClick(event) {
     let [input, menu] = [this.inputRef.current, this.menuRef.current];
     let isClickOutside = input && !input.contains(event.target) && menu && !menu.contains(event.target);
@@ -54,7 +60,7 @@ export default class CoinSelector extends React.Component {
     _.each(this.state.filteredAssets, (asset, index) => {
       assetListItems.push((
         <li key={asset.symbol} className="menu-item">
-          <a>
+          <a onClick={() => this.selectAsset(asset.symbol)}>
             <div className="asset-list-item-content">
               <span>{asset.symbol}</span>
               <span>{asset.price} <i className="fab fa-btc"></i></span>
@@ -82,8 +88,8 @@ export default class CoinSelector extends React.Component {
         {
           this.state.showSymbols &&
           <ul id="asset-list" 
-              className="menu menu-float col-sm-12 col-md-6 col-lg-4 col-3"
-              ref={this.menuRef}>
+            className="menu menu-float col-sm-12 col-md-6 col-lg-4 col-3"
+            ref={this.menuRef}>
             {assetListItems}
           </ul>
         }

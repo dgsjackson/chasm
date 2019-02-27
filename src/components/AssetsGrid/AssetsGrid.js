@@ -1,5 +1,7 @@
 import React from 'react';
 import { AgGridReact } from 'ag-grid-react';
+import BinanceProvider from '../../providers/BinanceProvider';
+import Events from '../../Events';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham.css';
 
@@ -18,24 +20,35 @@ export default class AssetsGrid extends React.Component {
           { headerName: 'Low', field: 'low' },
           { headerName: 'Vol', field: 'volume' }
         ],
-        rowData: [
-          {
-            symbol: 'XRP',
-            price: '0.000023',
-            change: '3.1',
-            last: '0.000024',
-            high: '0.000026',
-            low: '0.000022',
-            volume: '75863757'
-          }
-        ]
+        rowData: []
       }
     };
     this.resizeColumnsToFit = this.resizeColumnsToFit.bind(this);
+    this.onGridReady = this.onGridReady.bind(this);
+    this.fetchAssetStats = this.fetchAssetStats.bind(this);
+  }
+
+  componentDidMount() {
+    Events.on(Events.AssetSelected, this.fetchAssetStats);
+  }
+
+  componentWillUnmount() {
+    Events.removeListener(Events.AssetSelected, this.fetchAssetStats);
   }
 
   resizeColumnsToFit(params) {
     params.api.sizeColumnsToFit();
+  }
+
+  onGridReady(params) {
+    this.api = params.api;
+    params.api.sizeColumnsToFit();
+  }
+
+  fetchAssetStats(assetSymbol) {
+    BinanceProvider.fetchAssetStats(assetSymbol).then(asset => {
+      this.api.updateRowData({ add: [asset] });
+    }).catch(() => console.alert('Failed to load asset stats from Binance :(.'));
   }
 
   render() {
@@ -43,7 +56,7 @@ export default class AssetsGrid extends React.Component {
       <AgGridReact 
         columnDefs={this.state.grid.columnDefs}
         rowData={this.state.grid.rowData}
-        onGridReady={this.resizeColumnsToFit}
+        onGridReady={this.onGridReady}
         onGridSizeChanged={this.resizeColumnsToFit}>
       </AgGridReact>
     );
