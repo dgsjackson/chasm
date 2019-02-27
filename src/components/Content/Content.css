@@ -9,12 +9,6 @@
   margin-top: 20px;
 }
 
-#asset-grid {
-  display: grid;
-  justify-content: space-around;
-  grid-template-columns: repeat(7, auto); 
-}
-
 .column-title {
   font-size: 14px;
 }
