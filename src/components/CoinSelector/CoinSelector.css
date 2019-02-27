@@ -8,7 +8,7 @@
   overflow-y: auto;
 }
 
-.asset-list-content {
+.asset-list-item-content {
   display: flex;
   justify-content: space-between;
 }

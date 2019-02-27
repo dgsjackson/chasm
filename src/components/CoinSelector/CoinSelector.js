@@ -12,13 +12,21 @@ export default class CoinSelector extends React.Component {
       filteredAssets: [], 
       showSymbols: false 
     };
+    this.inputRef = React.createRef();
+    this.menuRef = React.createRef();
     this.filterAssets = this.filterAssets.bind(this);
+    this.handleDocumentClick = this.handleDocumentClick.bind(this);
   }
 
   componentDidMount() {
+    document.addEventListener('mousedown', this.handleDocumentClick);
     BinanceProvider.fetchPricesInBTC().then(assets => {
       this.setState({ assets, filteredAssets: assets });
     }).catch(() => alert('Failed to load symbols from Binance.'));
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleDocumentClick);
   }
 
   filterAssets(event) {
@@ -32,6 +40,14 @@ export default class CoinSelector extends React.Component {
     this.setState({ filteredAssets });
   }
 
+  handleDocumentClick(event) {
+    let [input, menu] = [this.inputRef.current, this.menuRef.current];
+    let isClickOutside = input && !input.contains(event.target) && menu && !menu.contains(event.target);
+    if (isClickOutside) {
+      this.setState({ showSymbols: false });
+    }
+  }
+
   render() {
     let assetListItems = [];
 
@@ -39,7 +55,7 @@ export default class CoinSelector extends React.Component {
       assetListItems.push((
         <li key={asset.symbol} className="menu-item">
           <a>
-            <div className="asset-list-content">
+            <div className="asset-list-item-content">
               <span>{asset.symbol}</span>
               <span>{asset.price} <i className="fab fa-btc"></i></span>
             </div>  
@@ -56,16 +72,18 @@ export default class CoinSelector extends React.Component {
         <div className="col-sm-12 col-md-6 col-lg-4 col-3">
           <input id="coin-selector"
             className="form-input"
-            type="text" 
+            type="text"
             onChange={this.filterAssets}
             onFocus={() => this.setState({ showSymbols: true })}
-            onBlur={() => this.setState({ showSymbols: false })}
-            autoComplete="off">
+            autoComplete="off"
+            ref={this.inputRef}>
           </input>
         </div>
         {
           this.state.showSymbols &&
-          <ul id="asset-list" className="menu menu-float col-sm-12 col-md-6 col-lg-4 col-3">
+          <ul id="asset-list" 
+              className="menu menu-float col-sm-12 col-md-6 col-lg-4 col-3"
+              ref={this.menuRef}>
             {assetListItems}
           </ul>
         }
