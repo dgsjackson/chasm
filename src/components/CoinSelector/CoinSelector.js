@@ -82,6 +82,7 @@ export default class CoinSelector extends React.Component {
             onChange={this.filterAssets}
             onFocus={() => this.setState({ showSymbols: true })}
             autoComplete="off"
+            placeHolder="Symbols..."
             ref={this.inputRef}>
           </input>
         </div>
