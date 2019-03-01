@@ -4,7 +4,10 @@
   "description": "A pet project for learning ReactJS",
   "main": "index.js",
   "scripts": {
-    "build": "npx webpack-dev-server --mode development",
+    "build": "./node_modules/webpack/bin/webpack.js",
+    "heroku-postbuild": "webpack -p",
+    "start:dev": "npx webpack-dev-server --mode development",
+    "start:prod": "node server.js",
     "lint": "npx eslint \"src/**/*.js\""
   },
   "author": "",
@@ -28,6 +31,7 @@
     "ag-grid-community": "^20.1.0",
     "ag-grid-react": "^20.1.0",
     "axios": "^0.18.0",
+    "express": "^4.16.4",
     "lodash": "^4.17.11",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
