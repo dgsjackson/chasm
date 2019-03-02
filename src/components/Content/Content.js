@@ -12,8 +12,8 @@ export default class Content extends React.Component {
         <CoinSelector/>
         <div id="grid-container" className="ag-theme-balham col-sm-12 col-md-9 col-6">
           <AssetsGrid></AssetsGrid>
+          <LoadingOverlay/>
         </div>
-        <LoadingOverlay/>
       </div>
     );
   }
