@@ -1,6 +1,6 @@
 #selector-container {
   position: relative;
-  z-index: 100;
+  z-index: 500;
   margin-bottom: 20px;
 }
 

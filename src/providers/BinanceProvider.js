@@ -1,6 +1,7 @@
 import axios from 'axios';
 import _ from 'lodash';
 import handleAxiosError from '../error-handlers/AxiosErrorHandler';
+import RequestCounter from '../services/RequestCounter';
 
 const corsProxyUrl = 'https://cors-anywhere.herokuapp.com/';
 const binanceUrl = 'https://www.binance.com/api/';

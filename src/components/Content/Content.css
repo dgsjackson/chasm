@@ -3,6 +3,10 @@
   padding: 20px;
 }
 
+#grid-container {
+  position: relative;
+}
+
 .column-title {
   font-size: 14px;
 }

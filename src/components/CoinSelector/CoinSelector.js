@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import BinanceProvider from '../../providers/BinanceProvider';
 import Events from '../../Events';
 import _ from 'lodash';
@@ -94,6 +95,10 @@ function AssetListItem(props) {
     </li>
   );
 }
+
+AssetListItem.propTypes = {
+  asset: PropTypes.objectOf(PropTypes.string).isRequired
+};
 
 function selectAsset(assetSymbol) {
   Events.trigger(Events.AssetSelected, [assetSymbol]);
