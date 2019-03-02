@@ -1,6 +1,6 @@
 import React from 'react';
 import Events from '../../Events';
-import './LoadingOverlay.css';
+import './LoadingOverlay.scss';
 
 class LoadingOverlay extends React.Component {
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import './Content.css';
+import './Content.scss';
 import CoinSelector from '../CoinSelector/CoinSelector';
 import AssetsGrid from '../AssetsGrid/AssetsGrid';
 import LoadingOverlay from '../LoadingOverlay/LoadingOverlay';

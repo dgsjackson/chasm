@@ -1,7 +1,9 @@
+@import '../../styling/colours';
+
 #app-header {
   padding: 10px;
-  background-color: navy;
-  color: white;
+  background-color: $slate-blue;
+  color: $vermillion;
 }
 
 #header-brand {

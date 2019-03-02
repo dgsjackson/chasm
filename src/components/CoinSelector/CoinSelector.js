@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import BinanceProvider from '../../providers/BinanceProvider';
 import Events from '../../Events';
 import _ from 'lodash';
-import './CoinSelector.css';
+import './CoinSelector.scss';
 
 export default class CoinSelector extends React.Component {
 
