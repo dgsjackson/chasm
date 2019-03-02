@@ -59,7 +59,7 @@ export default class CoinSelector extends React.Component {
     return (
       <div id="selector-container">
         <div className="col-sm-12 col-md-6 col-lg-4 col-3">
-          <input id="coin-selector"
+          <input id="selector-input"
             className="form-input"
             type="text"
             onChange={this.filterAssets}
