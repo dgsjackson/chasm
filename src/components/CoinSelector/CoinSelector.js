@@ -16,7 +16,6 @@ export default class CoinSelector extends React.Component {
     this.inputRef = React.createRef();
     this.menuRef = React.createRef();
     this.filterAssets = this.filterAssets.bind(this);
-    this.selectAsset = this.selectAsset.bind(this);
     this.handleDocumentClick = this.handleDocumentClick.bind(this);
   }
 
@@ -33,17 +32,10 @@ export default class CoinSelector extends React.Component {
 
   filterAssets(event) {
     let input = event.target.value;
-    let filteredAssets;
-    if (_.isEmpty(input)) {
-      filteredAssets = this.state.assets;
-    } else {
-      filteredAssets = _.filter(this.state.assets, asset => asset.symbol.match(input.toUpperCase()));
-    }
+    let filteredAssets = _.isEmpty(input) 
+      ? this.state.assets 
+      : _.filter(this.state.assets, asset => asset.symbol.match(input.toUpperCase()));
     this.setState({ filteredAssets });
-  }
-
-  selectAsset(assetSymbol) {
-    Events.trigger(Events.AssetSelected, [assetSymbol]);
   }
 
   handleDocumentClick(event) {
@@ -58,16 +50,7 @@ export default class CoinSelector extends React.Component {
     let assetListItems = [];
 
     _.each(this.state.filteredAssets, (asset, index) => {
-      assetListItems.push((
-        <li key={asset.symbol} className="menu-item">
-          <a onClick={() => this.selectAsset(asset.symbol)}>
-            <div className="asset-list-item-content">
-              <span>{asset.symbol}</span>
-              <span>{asset.price} <i className="fab fa-btc"></i></span>
-            </div>  
-          </a>  
-        </li>
-      ));
+      assetListItems.push(<AssetListItem key={asset.symbol} asset={asset}/>);
       if (index < this.state.filteredAssets.length - 1) {
         assetListItems.push(<li key={index} className="divider"></li>);        
       }
@@ -82,7 +65,7 @@ export default class CoinSelector extends React.Component {
             onChange={this.filterAssets}
             onFocus={() => this.setState({ showSymbols: true })}
             autoComplete="off"
-            placeHolder="Symbols..."
+            placeholder="Symbols..."
             ref={this.inputRef}>
           </input>
         </div>
@@ -97,4 +80,21 @@ export default class CoinSelector extends React.Component {
       </div>
     );
   }
+}
+
+function AssetListItem(props) {
+  return (
+    <li className="menu-item">
+      <a onClick={() => selectAsset(props.asset.symbol)}>
+        <div className="asset-list-item-content">
+          <span>{props.asset.symbol}</span>
+          <span>{props.asset.price} <i className="fab fa-btc"></i></span>
+        </div>  
+      </a>  
+    </li>
+  );
+}
+
+function selectAsset(assetSymbol) {
+  Events.trigger(Events.AssetSelected, [assetSymbol]);
 }
