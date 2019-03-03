@@ -6,11 +6,11 @@ export default class Header extends React.Component {
     return (
       <header id="app-header" className="navbar">
         <section className="navbar-section">
-          <h3 id="header-brand" className="navbar-brand">CryptoMania!</h3>
-          <span className="navbar-item">Making the lucrative lucid</span>
+          <span id="header-brand">CHASM</span>
+          <span className="navbar-item">Making the lucrative lucid.</span>
         </section>
-        <section>
-          <span>About</span>
+        <section class="navbar-section">
+          <span class="navbar-item">About</span>
         </section>
       </header>
     );

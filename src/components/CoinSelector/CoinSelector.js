@@ -66,7 +66,7 @@ export default class CoinSelector extends React.Component {
             onChange={this.filterAssets}
             onFocus={() => this.setState({ showSymbols: true })}
             autoComplete="off"
-            placeholder="Symbols..."
+            placeholder="[Choose a SYM ...]"
             ref={this.inputRef}>
           </input>
         </div>
@@ -89,7 +89,7 @@ function AssetListItem(props) {
       <a onClick={() => selectAsset(props.asset.symbol)}>
         <div className="asset-list-item-content">
           <span>{props.asset.symbol}</span>
-          <span>{props.asset.price} <i className="fab fa-btc"></i></span>
+          <span><i className="fab fa-btc"></i> {props.asset.price} </span>
         </div>  
       </a>  
     </li>
