@@ -1,11 +1,21 @@
+@import '../../styling/colours';
+
 #selector-container {
   position: relative;
   z-index: 500;
-  margin-bottom: 20px;
+}
+
+#selector-input {
+  background-color: $ice-gray;
+
+  &:focus {
+    border-color: $vermillion;
+  }
 }
 
 #asset-list {
   max-height: 600px;
+  width: 100%;
   overflow-y: auto;
 }
 

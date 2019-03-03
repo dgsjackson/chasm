@@ -59,21 +59,19 @@ export default class CoinSelector extends React.Component {
 
     return (
       <div id="selector-container">
-        <div className="col-sm-12 col-md-6 col-lg-4 col-3">
-          <input id="selector-input"
-            className="form-input"
-            type="text"
-            onChange={this.filterAssets}
-            onFocus={() => this.setState({ showSymbols: true })}
-            autoComplete="off"
-            placeholder="[Choose a SYM ...]"
-            ref={this.inputRef}>
-          </input>
-        </div>
+        <input id="selector-input"
+          className="form-input"
+          type="text"
+          onChange={this.filterAssets}
+          onFocus={() => this.setState({ showSymbols: true })}
+          autoComplete="off"
+          placeholder="SYMBOLS..."
+          ref={this.inputRef}>
+        </input>
         {
           this.state.showSymbols &&
           <ul id="asset-list" 
-            className="menu menu-float col-sm-12 col-md-6 col-lg-4 col-3"
+            className="menu menu-float"
             ref={this.menuRef}>
             {assetListItems}
           </ul>
