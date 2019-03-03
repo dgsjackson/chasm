@@ -24,12 +24,8 @@ module.exports = {
         use: ['style-loader', 'css-loader']
       },
       {
-        test: /\.ttf$/,
-        loader: 'file-loader',
-        options: {
-          outputPath: 'fonts/',
-          name: '[name].[ext]'
-        }
+        test: /\.svg$/,
+        loader: 'file-loader'
       }
     ]
   },

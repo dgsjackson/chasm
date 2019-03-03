@@ -2,8 +2,7 @@ import React from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import BinanceProvider from '../../providers/BinanceProvider';
 import Events from '../../Events';
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-balham.css';
+import './AssetsGrid.scss';
 
 export default class AssetsGrid extends React.Component {
 
