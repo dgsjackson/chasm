@@ -83,7 +83,7 @@ export default class CoinSelector extends React.Component {
 
 function AssetListItem(props) {
   return (
-    <li className="menu-item">
+    <li className="menu-item asset-list-item">
       <a onClick={() => selectAsset(props.asset.symbol)}>
         <div className="asset-list-item-content">
           <span>{props.asset.symbol}</span>

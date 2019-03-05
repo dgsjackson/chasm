@@ -6,7 +6,7 @@
 }
 
 #selector-input {
-  background-color: $ice-gray;
+  background-color: $sub-gray;
 
   &:focus {
     border-color: $vermillion;
@@ -17,6 +17,12 @@
   max-height: 600px;
   width: 100%;
   overflow-y: auto;
+  color: $sub-gray;
+
+  .asset-list-item a:hover {
+    background-color: $light-vermillion;
+    color: $vermillion;
+  }
 }
 
 .asset-list-item-content {
