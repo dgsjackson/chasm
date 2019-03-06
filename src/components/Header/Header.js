@@ -13,8 +13,8 @@ export default class Header extends React.Component {
         <section className="navbar-section selector-container">
           <CoinSelector/>
         </section>
-        <section class="navbar-section">
-          <span class="navbar-item">About</span>
+        <section className="navbar-section">
+          <span className="navbar-item">About</span>
         </section>
       </header>
     );
