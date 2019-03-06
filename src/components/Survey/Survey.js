@@ -1,5 +1,6 @@
 import React from 'react';
 import './Survey.scss';
+import PropTypes from 'prop-types';
 
 export default class Survey extends React.Component {
 
@@ -35,3 +36,8 @@ function MetricTile(props) {
     </div>
   );
 }
+
+MetricTile.propTypes = {
+  name: PropTypes.string,
+  value: PropTypes.string
+};
