@@ -3,6 +3,10 @@
 $font-family: 'Jura';
 $header-foreground-color: $vermillion;
 
+#ag-grid {
+  height: 100%;
+}
+
 //The following line is unfortunately required due to https://github.com/ag-grid/ag-grid/issues/1950
 $ag-icons-path: '../../../node_modules/ag-grid-community/src/styles/ag-theme-base/icons/';
 

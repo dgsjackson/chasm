@@ -1,0 +1,39 @@
+@import '../../styling/colours';
+
+.survey-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 150px repeat(3, auto);
+  grid-template-rows: repeat(4, 70px);
+  grid-template-areas: 
+    ". .     .     ."
+    ". chart chart chart"
+    ". chart chart chart"
+    ". chart chart chart";
+
+  &> div {
+    color: $vermillion;
+  }
+}
+
+.chart {
+  grid-area: chart;
+  border: 1px solid grey;
+}
+
+.metric-tile {
+  position: relative;
+}
+
+.tile-name, .tile-value {
+  position: absolute;
+}
+.tile-name {
+  top: 5px;
+  left: 5px;
+}
+
+.tile-value {
+  left: 50%;
+  bottom: 0px;
+}

@@ -52,12 +52,14 @@ export default class AssetsGrid extends React.Component {
 
   render() {
     return (
-      <AgGridReact 
-        columnDefs={this.state.grid.columnDefs}
-        rowData={this.state.grid.rowData}
-        onGridReady={this.onGridReady}
-        onGridSizeChanged={this.resizeColumnsToFit}>
-      </AgGridReact>
+      <div id="ag-grid" className="ag-theme-balham-dark">
+        <AgGridReact 
+          columnDefs={this.state.grid.columnDefs}
+          rowData={this.state.grid.rowData}
+          onGridReady={this.onGridReady}
+          onGridSizeChanged={this.resizeColumnsToFit}>
+        </AgGridReact>
+      </div> 
     );
   }
 
