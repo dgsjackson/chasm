@@ -7,8 +7,6 @@ class LoadingOverlay extends React.Component {
   constructor(props) {
     super(props);
     this.state = { show: false };
-    this.show = this.show.bind(this);
-    this.hide = this.hide.bind(this);
   }
 
   componentDidMount() {
@@ -21,11 +19,11 @@ class LoadingOverlay extends React.Component {
     Events.removeListener(Events.ResponsesReceived, this.hide);
   }
 
-  show() {
+  show = () => {
     this.setState({ show: true });
   }
 
-  hide() {
+  hide = () => {
     this.setState({ show: false });
   }
 

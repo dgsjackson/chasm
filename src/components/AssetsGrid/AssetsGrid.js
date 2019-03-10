@@ -22,9 +22,6 @@ export default class AssetsGrid extends React.Component {
         rowData: []
       }
     };
-    this.resizeColumnsToFit = this.resizeColumnsToFit.bind(this);
-    this.onGridReady = this.onGridReady.bind(this);
-    this.fetchAssetStats = this.fetchAssetStats.bind(this);
   }
 
   componentDidMount() {
@@ -35,16 +32,16 @@ export default class AssetsGrid extends React.Component {
     Events.removeListener(Events.AssetSelected, this.fetchAssetStats);
   }
 
-  resizeColumnsToFit(params) {
+  resizeColumnsToFit = params => {
     params.api.sizeColumnsToFit();
   }
 
-  onGridReady(params) {
+  onGridReady = params => {
     this.api = params.api;
     params.api.sizeColumnsToFit();
   }
-
-  fetchAssetStats(assetSymbol) {
+  
+  fetchAssetStats = assetSymbol => {
     BinanceProvider.fetchAssetStats(assetSymbol).then(asset => {
       this.api.updateRowData({ add: [asset] });
     }).catch(() => console.alert('Failed to load asset stats from Binance :(.'));

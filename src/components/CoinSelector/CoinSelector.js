@@ -16,8 +16,6 @@ export default class CoinSelector extends React.Component {
     };
     this.inputRef = React.createRef();
     this.menuRef = React.createRef();
-    this.filterAssets = this.filterAssets.bind(this);
-    this.handleDocumentClick = this.handleDocumentClick.bind(this);
   }
 
   componentDidMount() {
@@ -31,7 +29,7 @@ export default class CoinSelector extends React.Component {
     document.removeEventListener('mousedown', this.handleDocumentClick);
   }
 
-  filterAssets(event) {
+  filterAssets = event => {
     let input = event.target.value;
     let filteredAssets = _.isEmpty(input) 
       ? this.state.assets 
@@ -39,7 +37,7 @@ export default class CoinSelector extends React.Component {
     this.setState({ filteredAssets });
   }
 
-  handleDocumentClick(event) {
+  handleDocumentClick = () => {
     let [input, menu] = [this.inputRef.current, this.menuRef.current];
     let isClickOutside = input && !input.contains(event.target) && menu && !menu.contains(event.target);
     if (isClickOutside) {
