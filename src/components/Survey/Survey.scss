@@ -3,8 +3,8 @@
 .survey-grid {
   position: relative;
   display: grid;
-  grid-template-columns: 150px repeat(3, auto);
-  grid-template-rows: repeat(4, 70px);
+  grid-template-columns: 70px repeat(3, auto);
+  grid-template-rows: 50px repeat(3, 70px);
   grid-template-areas: 
     ". .     .     ."
     ". chart chart chart"
