@@ -34,7 +34,7 @@
   "dependencies": {
     "ag-grid-community": "^20.1.0",
     "ag-grid-react": "^20.1.0",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "express": "^4.16.4",
     "lodash": "^4.17.11",
     "react": "^16.8.1",
